@@ -74,7 +74,7 @@ class Cliente:
     def __str__(self):
         return f'{self.nome} | {self.idade} | {self.email} | {self.telefone}'
 
-#Intanciando objeto
+#Intanciando objeto.
 cliente_roberto = Cliente('Roberto',51,'roberto@sememail.com.br','11 99999-9999')
 
 print(cliente_roberto)
