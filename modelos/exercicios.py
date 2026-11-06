@@ -1,3 +1,4 @@
+'''
 #Crie uma classe Musica com os atributos nome,artista e duração. E depois, instancia 3 objetos desta classe
 class Musica:
     musicas = []
@@ -78,3 +79,33 @@ class Cliente:
 cliente_roberto = Cliente('Roberto',51,'roberto@sememail.com.br','11 99999-9999')
 
 print(cliente_roberto)
+'''
+
+class Pessoa:
+    def __init__(self,nome,idade,profissao = ''):
+        self.nome = nome
+        self.idade = idade
+        self.profissao = profissao
+
+    def __str__(self):
+        return f'{self.nome} | {self.idade} | {self.profissao}'
+    
+    #Metódo instancia
+    def aniversario(self):
+        self.idade += 1
+    #
+    @property
+    def saudacao(self):
+        if self.profissao:
+            return f'Olá, sou {self.nome}! Trabalho como {self.profissao}'
+        else:
+            return f'Olá, sou {self.nome}'
+
+
+pessoa_cleber = Pessoa('Cleber',21,'Mecânico')
+pessoa_carlos = Pessoa('Carlos',45)
+print(pessoa_cleber)
+pessoa_cleber.aniversario()
+print(pessoa_cleber)
+print(pessoa_cleber.saudacao)
+print(pessoa_carlos)
