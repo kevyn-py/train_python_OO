@@ -1,4 +1,8 @@
 from modelos.avaliacao import Avaliacao
+from modelos.servicos.item_servico import ItemServico
+from modelos.servicos.revisao import Revisao
+from modelos.servicos.reparo import Reparo
+from modelos.servicos.pintura import Pintura
 
 #Criação da classe
 class Carro:
@@ -24,6 +28,7 @@ class Carro:
         self._ativo = False  #._ é um atributo protegido, que nao deve ser mexido
 
         self._avaliacao = []
+        self._servico = []
 
         Carro.carros.append(self) # Adicionando todos os carros numa lista
 
@@ -80,7 +85,28 @@ class Carro:
         media = round(soma/quantidade,1)# utiliando o round() para exibir apenas uma casa de decimal
         return media
 
+    #Criando um metodo para adiconar na lista servico, todos os tipos de trabalho. Criando um ligação com o objeto carro.
+    def adicionar_no_servico(self,item):
+        if isinstance(item,ItemServico): #isinstance(argumento,classe) serve para verificar se o objeto é uma instancia ou subclasse de uma classe especifica.
+            self._servico.append(item)
 
+    @property
+    def exibir_servico(self):
+        print(f'Serviço do carro {self._nome}\n')
+        for i,item in enumerate(self._servico,start=1): #Enumerete() uma função para percorrer uma lista e obter o índice e o valor de cada elemento durante um loop
+            if isinstance(item, Revisao):
+                mensagem_revisao = f'{i} - Descrição: {item._descricao} | Mão de obra: {item._mao_de_obra} | KM do veículo: {item._km_veiculo} | Quantidade de peças checadas: {item._qtd_itens_checados}'
+                print(mensagem_revisao)
+                
+            if isinstance(item, Reparo):
+                mensagem_reparo = f'{i} - Descrição: {item._descricao} | Mão de obra: {item._mao_de_obra} | Valor da peça: {item._valor_pecas}'
+                print(mensagem_reparo)
+                
+            if isinstance(item,Pintura):
+                mensagem_pintura = f'{i} - Descrição: {item._descricao} | Mão de obra: {item._mao_de_obra} | Tipo da pintura: {item._tipo_pintura}'
+                print(mensagem_pintura)
+            
+        
 
     
 
